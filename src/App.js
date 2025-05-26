@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
+import Users from './pages/Users';
+import UserProfile from './pages/UserProfile';
+import Layout from './components/Layout';
+import DashboardLayout from './components/DashboardLayout';
+import ProfilePage from './pages/ProfilePage';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      {/* Auth Routes */}
+      <Route path="/signin" element={<SignIn />} />
+      <Route path="/signup" element={<SignUp />} />
+
+      {/* Main Layout (top nav) */}
+      <Route element={<Layout />}>
+        <Route path="/users" element={<Users />} />
+        <Route path="/users/:id" element={<UserProfile />} />
+      </Route>
+
+      {/* Dashboard Sidebar Layout */}
+      <Route path="/dashboard" element={<DashboardLayout />}>
+        <Route path="profile" element={<ProfilePage />} />
+      </Route>
+    </Routes>
   );
 }
-
-export default App;
