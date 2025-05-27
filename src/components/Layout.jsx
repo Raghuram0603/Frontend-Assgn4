@@ -1,18 +1,38 @@
+// import { Outlet } from 'react-router-dom';
+// import Sidebar from './Sidebar';
+// import Navbar from './Navbar';
+
+// const Layout = () => {
+//   return (
+//     <div className="container">
+//       <Sidebar />
+//       <div className="main-content">
+//         <Navbar />
+//         <main className="outlet">
+//           <Outlet />
+//         </main>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Layout;
 import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Navbar from './Navbar';
+import { Box } from '@mui/material';
 
 const Layout = () => {
   return (
-    <div className="container">
+    <Box display="flex">
       <Sidebar />
-      <div className="main-content">
+      <Box flexGrow={1}>
         <Navbar />
-        <main className="outlet">
+        <Box component="main" p={2}>
           <Outlet />
-        </main>
-      </div>
-    </div>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
