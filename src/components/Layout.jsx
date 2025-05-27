@@ -1,13 +1,19 @@
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import Sidebar from './Sidebar';
+import Navbar from './Navbar';
 
-export default function Layout() {
+const Layout = () => {
   return (
-    <div>
-      <nav style={{ padding: '1rem', backgroundColor: '#eee' }}>
-        <Link to="/users">Users</Link>
-      </nav>
-      <hr />
-      <Outlet />
+    <div className="container">
+      <Sidebar />
+      <div className="main-content">
+        <Navbar />
+        <main className="outlet">
+          <Outlet />
+        </main>
+      </div>
     </div>
   );
-}
+};
+
+export default Layout;

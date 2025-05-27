@@ -1,18 +1,27 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-export default function Sidebar() {
+const Sidebar = () => {
+  const [userId, setUserId] = useState(null);
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (user) setUserId(user.id);
+  }, []);
+
   return (
-    <div style={{
-      width: '200px',
-      height: '100vh',
-      backgroundColor: '#f0f0f0',
-      padding: '1rem',
-      boxSizing: 'border-box'
-    }}>
-      <h3>Menu</h3>
-      <ul style={{ listStyle: 'none', padding: 0 }}>
-        <li><Link to="/dashboard/profile">Profile</Link></li>
-      </ul>
+    <div className="sidebar">
+      <h1>User Management</h1>
+      <Link to="/dashboard">
+        <i className="icon dashboard"></i>Users
+      </Link>
+      {userId && (
+        <Link to={`/profile/${userId}`}>
+          <i className="icon dashboard"></i>Profile
+        </Link>
+      )}
     </div>
   );
-}
+};
+
+export default Sidebar;
