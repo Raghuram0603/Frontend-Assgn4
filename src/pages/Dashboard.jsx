@@ -1,9 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import {
-  Table, TableBody, TableCell, TableContainer,
-  TableHead, TableRow, Paper, Typography
-} from '@mui/material';
-import { fetchAllUsers } from '../services/userService';
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Typography,
+} from "@mui/material";
+import { fetchAllUsers } from "../services/userService";
 
 const Dashboard = () => {
   const [users, setUsers] = useState([]);
@@ -14,18 +20,34 @@ const Dashboard = () => {
 
   return (
     <>
-      <Typography variant="h4" gutterBottom>Users</Typography>
+      <Typography variant="h4" gutterBottom>
+        Users
+      </Typography>
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell>Username</TableCell>
-              <TableCell>Email</TableCell>
-              <TableCell>Phone</TableCell>
-              <TableCell>Website</TableCell>
-              <TableCell>Company</TableCell>
-              <TableCell>Address</TableCell>
+              <TableCell style={{ fontSize: "larger" }}>
+                <strong>Name</strong>
+              </TableCell>
+              <TableCell style={{ fontSize: "larger" }}>
+                <strong>Username</strong>
+              </TableCell>
+              <TableCell style={{ fontSize: "larger" }}>
+                <strong>Email</strong>
+              </TableCell>
+              <TableCell style={{ fontSize: "larger" }}>
+                <strong>Phone</strong>
+              </TableCell>
+              <TableCell style={{ fontSize: "larger" }}>
+                <strong>Website</strong>
+              </TableCell>
+              <TableCell style={{ fontSize: "larger" }}>
+                <strong>Company</strong>
+              </TableCell>
+              <TableCell style={{ fontSize: "larger" }}>
+                <strong>Address</strong>
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
