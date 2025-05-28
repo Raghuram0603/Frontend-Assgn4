@@ -1,20 +1,20 @@
-// const Navbar = () => {
-//   return (
-//     <nav className="navbar">
-//       <i className="icon nav"></i>
-//       <h2>Dashboard</h2>
-//     </nav>
-//   );
-// };
-
-// export default Navbar;
-import { AppBar, Toolbar, Typography } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button } from '@mui/material';
 
 const Navbar = () => {
+  const handleLogout = () => {
+    localStorage.clear();
+    window.location.href = '/';
+  };
+
   return (
-    <AppBar position="static" color="primary" elevation={1}>
+    <AppBar position="static">
       <Toolbar>
-        <Typography variant="h6">Dashboard</Typography>
+        <Typography variant="h6" sx={{ flexGrow: 1 }}>
+          Dashboard
+        </Typography>
+        <Button color="inherit" onClick={handleLogout}>
+          Logout
+        </Button>
       </Toolbar>
     </AppBar>
   );
