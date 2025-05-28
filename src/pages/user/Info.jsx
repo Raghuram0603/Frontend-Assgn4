@@ -1,27 +1,27 @@
-import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { fetchUserById } from '../services/userService';
+import { useParams } from 'react-router-dom';
+import { fetchUserById } from '../../services/userService';
 import { Typography, Paper, Box } from '@mui/material';
 
-const Profile = () => {
-  const { id } = useParams();
+const Info = () => {
+  const { userId } = useParams();
   const [user, setUser] = useState(null);
 
   useEffect(() => {
     const getUser = async () => {
-      const data = await fetchUserById(id);
+      const data = await fetchUserById(userId);
       setUser(data);
     };
     getUser();
-  }, [id]);
+  }, [userId]);
 
   if (!user) return <Typography>Loading...</Typography>;
 
   return (
     <Paper sx={{ p: 2 }}>
-      <Typography variant="h5">My Profile</Typography>
+      <Typography variant="h6">User Info</Typography>
       <Box mt={2}>
-        <Typography><strong>Full Name:</strong> {user.firstName} {user.lastName}</Typography>
+        <Typography><strong>Name:</strong> {user.firstName} {user.lastName}</Typography>
         <Typography><strong>Email:</strong> {user.email}</Typography>
         <Typography><strong>Phone:</strong> {user.phone}</Typography>
         <Typography><strong>Username:</strong> {user.username}</Typography>
@@ -30,4 +30,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default Info;
