@@ -15,7 +15,7 @@
 // api.interceptors.response.use(
 //   (res) => res,
 //   (error) => {
-//     if (error.response && error.response.status === 401) {
+//     if (error.response?.status === 401) {
 //       localStorage.clear();
 //       window.location.href = '/';
 //     }
@@ -27,7 +27,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL,
+  baseURL: 'https://user-management-server-bpxj.onrender.com',
 });
 
 api.interceptors.request.use((config) => {
@@ -41,10 +41,15 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (res) => res,
   (error) => {
+    if (error.message === 'Network Error') {
+      alert('Network Error');
+    }
+
     if (error.response?.status === 401) {
       localStorage.clear();
       window.location.href = '/';
     }
+
     return Promise.reject(error);
   }
 );
